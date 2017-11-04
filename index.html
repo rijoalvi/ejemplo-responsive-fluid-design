@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/assets/css/styles.css">
+	<title>Liquid + Responsive design</title>
+</head>
+
+<body>
+
+	<header>
+		<!--
+			Este es un ejemplo de menú de hamburguesa. Como no vamos a usar javascript, entonces hay que usar un par de cosas para que funcione sin javascript
+			-->
+		<nav role="menú principal">
+			<div class="hamburguesa mobile-only">
+				<!--
+					Como no tenemos un Usamos un checkbox para que detecte cuando hacemos click sobre la hamburguesa y nos abra el menú
+				-->
+				<input type="checkbox" class="checkbox-oculto"/>
+
+				<!--
+					Estos spans los vamos a usar para representar las rayitas de la hamburguesa :D 
+				-->
+				<span class="linea-hamburguesa"></span>
+				<span class="linea-hamburguesa"></span>
+				<span class="linea-hamburguesa"></span>
+
+				<!--
+					Este es el menú una vez que abirmos la hamburguesa
+				-->
+				<ul class="items-hamburguesa">
+					<a href="#"><li>Home</li></a>
+					<a href="#"><li>About</li></a>
+					<a href="#"><li>Info</li></a>
+					<a href="#"><li>Contact</li></a>
+					<a href="https://google.com/" target="_blank"><li>Show me more</li></a>
+				</ul>
+			</div>
+			<div class="desktop-items desktop-only">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">About</a></li>
+				<li><a href="#">Info</a></li>
+				<li><a href="#">Contact</a></li>
+				<li><a href="https://google.com/" target="_blank">Show me more</a></li>
+			</div>
+		</nav>
+	</header>
+	
+	<section class="articulos">
+	
+		<article class="post">
+			<header>
+				<h2>Art&iacute;culo 1</h2>
+				<p>Del <time datetime="2009-09-04T16:31:24+02:00">4 de Setiembre del 2009</time> por <a href="#">Ricardo</a> - <a href="#comments">6 comentarios</a></p>
+			</header>
+			<p>Este art&iacute;culo tiene una imagen con breakpoints. Ojo que usa el tag de &lt;picture&gt; !!!</p>
+			<picture >
+				<source srcset="/assets/img/test_landscape_1@4x.jpg" media="(min-width: 1025px)">
+			    <source srcset="/assets/img/test_landscape_1@2x.jpg" media="(min-width: 768px)">
+			    <source srcset="/assets/img/test_landscape_1@1x.jpg">
+			    <img class="responsive-img" srcset="/assets/img/test_landscape_1@1x.jpg" alt="My default image">
+			</picture>
+		</article>
+		
+		<article class="post ipad-desktop-only">
+			<header>
+				<h2>Art&iacute;culo 2</h2>
+				<p>Del <time datetime="2011-02-04T16:31:24+02:00">4 de Febrero del 2011</time> por <a href="#">Julio</a> - <a href="#comments">2 comments</a></p>
+			</header>
+			<p>Como este art&iacute;culo tiene una imagen normal, entonces solo va a verse en ipad o mas grande</p>
+			<img  class="regular-img" src="/assets/img/1024px-Antichthon.jpg" alt="My default image">
+		</article>
+
+		<article class="post">
+			<header>
+				<h2>Art&iacute;culo 3</h2>
+				<p>Del <time datetime="2017-03-04T16:31:24+02:00">4 de Marzo del 2017</time> por <a href="#">Sharon</a> - <a href="#comments">2 comments</a></p>
+			</header>
+			<p>Este articulo tiene imagen grande, pero se ve en todas las resoluciones porque la acomodamos con css!</p>
+			<img class="liquid-image" src="/assets/img/ocean.jpg" alt="My default image">
+			
+		</article>
+		
+	</section>
+
+	<aside class="about desktop-only">
+		<h2>Acerca de</h2>
+		<p>Espero que este ejemplo le sirva para ver tanto lo del dise&ntilde;o l&iacute;quido como lo de los breakpoints!</p>
+	</aside>
+
+	<footer class="copyright">
+		<p>2017 - Ricardo Alvarado</p>
+	</footer>
+
+</body>
+
+</html>

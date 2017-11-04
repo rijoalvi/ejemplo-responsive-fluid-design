@@ -1,0 +1,255 @@
+/*Estos serian los estilos para mobile. OJO que no estoy definiendo breakpoints,
+porque para eso voy a usar media queries para tablet y para desktop*/
+
+body {
+		margin: 0;
+		padding: 0;
+		/* make it look decent enough */
+		
+		background: #232323;
+		color: #cdcdcd;
+		font-family: sans-serif;
+        font-size: 10px;
+}
+
+
+/* Estilos de la hamburguesa */
+.hamburguesa {
+		display: block;
+		position: relative;
+		top: 50px;
+		left: 50px;
+		z-index: 1;
+		-webkit-user-select: none;
+		user-select: none;
+}
+
+.hamburguesa a {
+        text-decoration: none;
+        color: #232323;
+        transition: color 0.3s ease;
+}
+.hamburguesa a:hover {
+        color: tomato;
+}
+
+.hamburguesa .checkbox-oculto {
+		display: block;
+		width: 40px;
+		height: 32px;
+		position: absolute;
+		top: -7px;
+		left: -5px;
+		cursor: pointer;
+		opacity: 0;
+		/* hide this */
+		
+		z-index: 2;
+		/* and place it over the hamburger */
+		
+		-webkit-touch-callout: none;
+}
+/*
+ * Just a quick hamburger
+ */
+
+.hamburguesa span {
+		display: block;
+		width: 33px;
+		height: 4px;
+		margin-bottom: 5px;
+		position: relative;
+		background: #cdcdcd;
+		border-radius: 3px;
+		z-index: 1;
+		transform-origin: 4px 0px;
+		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0), opacity 0.55s ease;
+}
+.hamburguesa .linea-hamburguesa:first-child {
+		transform-origin: 0% 0%;
+}
+.hamburguesa .linea-hamburguesa:nth-last-child(2) {
+		transform-origin: 0% 100%;
+}
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+
+.hamburguesa .checkbox-oculto:checked ~ .linea-hamburguesa {
+		opacity: 1;
+		transform: rotate(45deg) translate(-2px, -1px);
+		background: #232323;
+}
+/*
+ * But let's hide the middle one.
+ */
+
+.hamburguesa .checkbox-oculto:checked ~ .linea-hamburguesa:nth-last-child(3) {
+		opacity: 0;
+		transform: rotate(0deg) scale(0.2, 0.2);
+}
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+
+.hamburguesa .checkbox-oculto:checked ~ .linea-hamburguesa:nth-last-child(2) {
+		transform: rotate(-45deg) translate(0, -1px);
+}
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+
+.items-hamburguesa {
+		position: absolute;
+		width: 300px;
+		margin: -100px 0 0 -50px;
+		padding: 50px;
+		padding-top: 125px;
+		background: #ededed;
+		list-style-type: none;
+		-webkit-font-smoothing: antialiased;
+		/* to stop flickering of text in safari */
+		
+		transform-origin: 0% 0%;
+		transform: translate(-100%, 0);
+		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+.items-hamburguesa li {
+		padding: 10px 0;
+		font-size: 22px;
+}
+/*
+ * And let's slide it in from the left
+ */
+
+.hamburguesa .checkbox-oculto:checked ~ .items-hamburguesa {
+		transform: none;
+}
+
+/*fin de los estilos de la hamburguesa*/
+
+.articulos {
+    position: relative;
+    top: 60px;
+    font-size: 1.4em;
+}
+
+.articulos a,
+.articulos a:visited {
+    color: #ccc;
+}
+
+.articulos a:hover {
+    color: #fff;
+}
+
+/*usando margin: 0 auto podemos centrar las cosas, mientras que no hayamos su position no sea absolute
+(o sea, que el position sea static o relative).
+En este caso queremos que el ancho de los artículos sea solo del 75% de la pantalla en mobile*/
+.articulos .post {
+    width: 75%; 
+    margin: 0 auto;
+}
+
+.liquid-image {
+    width: 80%;
+    height: auto;
+}
+
+.responsive-img {
+    width:100%;
+    height: auto;
+}
+
+.about {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* En mobile no queremos que se muestren las cosas que son solo para desktop (por ejemplo el menú de desktop), entonces: */
+.desktop-only,
+.ipad-desktop-only {
+    display: none;
+}
+
+
+/* Tablets (portrait y landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+    .ipad-desktop-only {
+        display: block;
+    }
+    .regular-img {
+        width: 100%;
+    }
+}
+
+/* Tablets (landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+/* Styles */
+}
+
+/* Desktop y pantallas mas grandes ----------- */
+@media only screen and (min-device-width : 1025px) {
+
+    /* En desktop no queremos que se muestren las cosas que son solo para mobile (por ejemplo el menú de hamburguesa), entonces: */
+    .mobile-only {
+        display: none;
+    }
+
+    /* Pero si queremos que se muestren las cosas que son solo para desktop: */
+    .desktop-only,
+    .ipad-desktop-only {
+        display: block;
+    }
+
+    .desktop-items {
+        width: 90%;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .desktop-items li {
+        font-size: 1.6em;
+        float: left;
+        padding: 0 2% 0 0;
+        list-style: none;
+    }
+
+    .desktop-items a,
+    .desktop-items a:visited {
+        color: #999;
+    }
+
+    .desktop-items a:hover {
+        color: #fff;
+    }
+
+    /*ojo que solo sobreescribimos lo que ocupamos de los estilos que declaramos arriba!*/
+
+    .articulos {
+        position: static;
+        overflow: hidden;
+    }
+
+    .articulos .post {
+        width: 40%;
+        padding: 0 5%;
+        float: left; 
+    }
+
+    .regular-img {
+        width: 90%;
+        font-size: 1.2em;
+    }
+
+    .about,
+    .copyright {
+        padding: 0 5%;
+        font-size: 1em;
+    }
+
+/* Styles */
+}
